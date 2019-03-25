@@ -10,6 +10,17 @@
 		23CAA66E22498FBE005B20AF /* DSFAttributedStringStream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23CAA66422498FBE005B20AF /* DSFAttributedStringStream.framework */; };
 		23CAA67322498FBE005B20AF /* DSFAttributedStringStreamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CAA67222498FBE005B20AF /* DSFAttributedStringStreamTests.swift */; };
 		23CAA67522498FBE005B20AF /* DSFAttributedStringStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 23CAA66722498FBE005B20AF /* DSFAttributedStringStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		23CAA68522498FE5005B20AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CAA68422498FE5005B20AF /* AppDelegate.swift */; };
+		23CAA68722498FE5005B20AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23CAA68622498FE5005B20AF /* Assets.xcassets */; };
+		23CAA68A22498FE5005B20AF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23CAA68822498FE5005B20AF /* MainMenu.xib */; };
+		23CAA69122498FF0005B20AF /* DSFAttributedStringStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CAA69022498FEF005B20AF /* DSFAttributedStringStream.swift */; };
+		23CAA69222499069005B20AF /* DSFAttributedStringStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CAA69022498FEF005B20AF /* DSFAttributedStringStream.swift */; };
+		23E0D87222503FEC005ACFCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E0D87122503FEC005ACFCB /* AppDelegate.swift */; };
+		23E0D87422503FEC005ACFCB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E0D87322503FEC005ACFCB /* ViewController.swift */; };
+		23E0D87722503FEC005ACFCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23E0D87522503FEC005ACFCB /* Main.storyboard */; };
+		23E0D87922503FED005ACFCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23E0D87822503FED005ACFCB /* Assets.xcassets */; };
+		23E0D87C22503FED005ACFCB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23E0D87A22503FED005ACFCB /* LaunchScreen.storyboard */; };
+		23E0D88122503FF9005ACFCB /* DSFAttributedStringStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CAA69022498FEF005B20AF /* DSFAttributedStringStream.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +40,22 @@
 		23CAA66D22498FBE005B20AF /* DSFAttributedStringStreamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DSFAttributedStringStreamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		23CAA67222498FBE005B20AF /* DSFAttributedStringStreamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSFAttributedStringStreamTests.swift; sourceTree = "<group>"; };
 		23CAA67422498FBE005B20AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23CAA68222498FE4005B20AF /* DSFAttributedStringStream Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DSFAttributedStringStream Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		23CAA68422498FE5005B20AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		23CAA68622498FE5005B20AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		23CAA68922498FE5005B20AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		23CAA68B22498FE5005B20AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23CAA68C22498FE5005B20AF /* DSFAttributedStringStream_Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DSFAttributedStringStream_Demo.entitlements; sourceTree = "<group>"; };
+		23CAA69022498FEF005B20AF /* DSFAttributedStringStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DSFAttributedStringStream.swift; sourceTree = "<group>"; };
+		23E0D86F22503FEC005ACFCB /* DSFAttributedStringStream iOS Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DSFAttributedStringStream iOS Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		23E0D87122503FEC005ACFCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		23E0D87322503FEC005ACFCB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		23E0D87622503FEC005ACFCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		23E0D87822503FED005ACFCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		23E0D87B22503FED005ACFCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		23E0D87D22503FED005ACFCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23F81B13224B65F3001B4EA0 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		23F81B14224B65F4001B4EA0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,14 +74,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		23CAA67F22498FE4005B20AF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23E0D86C22503FEC005ACFCB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		23CAA65A22498FBE005B20AF = {
 			isa = PBXGroup;
 			children = (
+				23F81B13224B65F3001B4EA0 /* LICENSE */,
+				23F81B14224B65F4001B4EA0 /* README.md */,
 				23CAA66622498FBE005B20AF /* DSFAttributedStringStream */,
 				23CAA67122498FBE005B20AF /* DSFAttributedStringStreamTests */,
+				23CAA68322498FE5005B20AF /* DSFAttributedStringStream Demo */,
+				23E0D87022503FEC005ACFCB /* DSFAttributedStringStream iOS Demo */,
 				23CAA66522498FBE005B20AF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -64,6 +109,8 @@
 			children = (
 				23CAA66422498FBE005B20AF /* DSFAttributedStringStream.framework */,
 				23CAA66D22498FBE005B20AF /* DSFAttributedStringStreamTests.xctest */,
+				23CAA68222498FE4005B20AF /* DSFAttributedStringStream Demo.app */,
+				23E0D86F22503FEC005ACFCB /* DSFAttributedStringStream iOS Demo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -72,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				23CAA66722498FBE005B20AF /* DSFAttributedStringStream.h */,
+				23CAA69022498FEF005B20AF /* DSFAttributedStringStream.swift */,
 				23CAA66822498FBE005B20AF /* Info.plist */,
 			);
 			path = DSFAttributedStringStream;
@@ -84,6 +132,31 @@
 				23CAA67422498FBE005B20AF /* Info.plist */,
 			);
 			path = DSFAttributedStringStreamTests;
+			sourceTree = "<group>";
+		};
+		23CAA68322498FE5005B20AF /* DSFAttributedStringStream Demo */ = {
+			isa = PBXGroup;
+			children = (
+				23CAA68422498FE5005B20AF /* AppDelegate.swift */,
+				23CAA68622498FE5005B20AF /* Assets.xcassets */,
+				23CAA68822498FE5005B20AF /* MainMenu.xib */,
+				23CAA68B22498FE5005B20AF /* Info.plist */,
+				23CAA68C22498FE5005B20AF /* DSFAttributedStringStream_Demo.entitlements */,
+			);
+			path = "DSFAttributedStringStream Demo";
+			sourceTree = "<group>";
+		};
+		23E0D87022503FEC005ACFCB /* DSFAttributedStringStream iOS Demo */ = {
+			isa = PBXGroup;
+			children = (
+				23E0D87122503FEC005ACFCB /* AppDelegate.swift */,
+				23E0D87322503FEC005ACFCB /* ViewController.swift */,
+				23E0D87522503FEC005ACFCB /* Main.storyboard */,
+				23E0D87822503FED005ACFCB /* Assets.xcassets */,
+				23E0D87A22503FED005ACFCB /* LaunchScreen.storyboard */,
+				23E0D87D22503FED005ACFCB /* Info.plist */,
+			);
+			path = "DSFAttributedStringStream iOS Demo";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,21 +209,62 @@
 			productReference = 23CAA66D22498FBE005B20AF /* DSFAttributedStringStreamTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		23CAA68122498FE4005B20AF /* DSFAttributedStringStream Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 23CAA68D22498FE5005B20AF /* Build configuration list for PBXNativeTarget "DSFAttributedStringStream Demo" */;
+			buildPhases = (
+				23CAA67E22498FE4005B20AF /* Sources */,
+				23CAA67F22498FE4005B20AF /* Frameworks */,
+				23CAA68022498FE4005B20AF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "DSFAttributedStringStream Demo";
+			productName = "DSFAttributedStringStream Demo";
+			productReference = 23CAA68222498FE4005B20AF /* DSFAttributedStringStream Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		23E0D86E22503FEC005ACFCB /* DSFAttributedStringStream iOS Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 23E0D88022503FED005ACFCB /* Build configuration list for PBXNativeTarget "DSFAttributedStringStream iOS Demo" */;
+			buildPhases = (
+				23E0D86B22503FEC005ACFCB /* Sources */,
+				23E0D86C22503FEC005ACFCB /* Frameworks */,
+				23E0D86D22503FEC005ACFCB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "DSFAttributedStringStream iOS Demo";
+			productName = "DSFAttributedStringStream iOS Demo";
+			productReference = 23E0D86F22503FEC005ACFCB /* DSFAttributedStringStream iOS Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		23CAA65B22498FBE005B20AF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1010;
+				LastSwiftUpdateCheck = 1020;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Darren Ford";
 				TargetAttributes = {
 					23CAA66322498FBE005B20AF = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 					23CAA66C22498FBE005B20AF = {
 						CreatedOnToolsVersion = 10.1;
+					};
+					23CAA68122498FE4005B20AF = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					23E0D86E22503FEC005ACFCB = {
+						CreatedOnToolsVersion = 10.2;
 					};
 				};
 			};
@@ -160,6 +274,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 23CAA65A22498FBE005B20AF;
 			productRefGroup = 23CAA66522498FBE005B20AF /* Products */;
@@ -168,6 +283,8 @@
 			targets = (
 				23CAA66322498FBE005B20AF /* DSFAttributedStringStream */,
 				23CAA66C22498FBE005B20AF /* DSFAttributedStringStreamTests */,
+				23CAA68122498FE4005B20AF /* DSFAttributedStringStream Demo */,
+				23E0D86E22503FEC005ACFCB /* DSFAttributedStringStream iOS Demo */,
 			);
 		};
 /* End PBXProject section */
@@ -187,6 +304,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		23CAA68022498FE4005B20AF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23CAA68722498FE5005B20AF /* Assets.xcassets in Resources */,
+				23CAA68A22498FE5005B20AF /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23E0D86D22503FEC005ACFCB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23E0D87C22503FED005ACFCB /* LaunchScreen.storyboard in Resources */,
+				23E0D87922503FED005ACFCB /* Assets.xcassets in Resources */,
+				23E0D87722503FEC005ACFCB /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -194,6 +330,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23CAA69122498FF0005B20AF /* DSFAttributedStringStream.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,6 +339,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				23CAA67322498FBE005B20AF /* DSFAttributedStringStreamTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23CAA67E22498FE4005B20AF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23CAA69222499069005B20AF /* DSFAttributedStringStream.swift in Sources */,
+				23CAA68522498FE5005B20AF /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23E0D86B22503FEC005ACFCB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23E0D87422503FEC005ACFCB /* ViewController.swift in Sources */,
+				23E0D87222503FEC005ACFCB /* AppDelegate.swift in Sources */,
+				23E0D88122503FF9005ACFCB /* DSFAttributedStringStream.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,6 +370,33 @@
 			targetProxy = 23CAA66F22498FBE005B20AF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		23CAA68822498FE5005B20AF /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				23CAA68922498FE5005B20AF /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		23E0D87522503FEC005ACFCB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				23E0D87622503FEC005ACFCB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		23E0D87A22503FED005ACFCB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				23E0D87B22503FED005ACFCB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		23CAA67622498FBE005B20AF /* Debug */ = {
@@ -340,6 +523,7 @@
 		23CAA67922498FBE005B20AF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -359,6 +543,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.darrenford.DSFAttributedStringStream;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
@@ -366,6 +551,7 @@
 		23CAA67A22498FBE005B20AF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -392,6 +578,7 @@
 		23CAA67C22498FBE005B20AF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 3L6RK3LGGW;
@@ -410,6 +597,7 @@
 		23CAA67D22498FBE005B20AF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 3L6RK3LGGW;
@@ -422,6 +610,87 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.darrenford.DSFAttributedStringStreamTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
+			};
+			name = Release;
+		};
+		23CAA68E22498FE5005B20AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "DSFAttributedStringStream Demo/DSFAttributedStringStream_Demo.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 3L6RK3LGGW;
+				INFOPLIST_FILE = "DSFAttributedStringStream Demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.DSFAttributedStringStream-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Debug;
+		};
+		23CAA68F22498FE5005B20AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "DSFAttributedStringStream Demo/DSFAttributedStringStream_Demo.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 3L6RK3LGGW;
+				INFOPLIST_FILE = "DSFAttributedStringStream Demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.DSFAttributedStringStream-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Release;
+		};
+		23E0D87E22503FED005ACFCB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3L6RK3LGGW;
+				INFOPLIST_FILE = "DSFAttributedStringStream iOS Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.DSFAttributedStringStream-iOS-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		23E0D87F22503FED005ACFCB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3L6RK3LGGW;
+				INFOPLIST_FILE = "DSFAttributedStringStream iOS Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.DSFAttributedStringStream-iOS-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -451,6 +720,24 @@
 			buildConfigurations = (
 				23CAA67C22498FBE005B20AF /* Debug */,
 				23CAA67D22498FBE005B20AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		23CAA68D22498FE5005B20AF /* Build configuration list for PBXNativeTarget "DSFAttributedStringStream Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				23CAA68E22498FE5005B20AF /* Debug */,
+				23CAA68F22498FE5005B20AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		23E0D88022503FED005ACFCB /* Build configuration list for PBXNativeTarget "DSFAttributedStringStream iOS Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				23E0D87E22503FED005ACFCB /* Debug */,
+				23E0D87F22503FED005ACFCB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
