@@ -217,6 +217,38 @@ let attributedString = NSAttributedString.stream {
 
 ```
 
+## Objective-C
+
+A simple objective-c example
+
+```objective-c
+DSFAttributedStringStream* stream = [[DSFAttributedStringStream alloc] init];
+
+[stream setFont:[NSFont systemFontOfSize:32]];
+[stream setColor:[NSColor textColor]];
+[stream setStyle:NSUnderlineStyleAttributeName:@(NSUnderlineStyleSingle)];
+[stream append:@"Heading"];
+[stream unsetStyle:NSUnderlineStyleAttributeName];
+[stream append:@" "];
+[stream appendScaledImage:[NSImage imageNamed:NSImageNameInfo]:CGSizeMake(28, 28)];
+[stream append:@" With "];
+[stream setColor:[NSColor systemBlueColor]];
+[stream setStyle:NSObliquenessAttributeName:@(0.2)];
+[stream append:@"Image"];
+[stream unsetAll];
+
+[[stream endl] endl];
+
+NSMutableParagraphStyle* style = [[NSMutableParagraphStyle alloc] init];
+[style setAlignment:NSTextAlignmentRight];
+[stream setStyle:NSParagraphStyleAttributeName:style];
+[stream setColor:[NSColor textColor]];
+[stream append:@"﷽"];
+[[stream endl] endl];
+
+NSAttributedString* attributedString = [stream attributed];
+```
+
 # License
 
 ```

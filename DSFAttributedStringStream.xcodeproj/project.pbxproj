@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		238783E022516FC400BD519F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 238783DF22516FC400BD519F /* AppDelegate.m */; };
+		238783E222516FC400BD519F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 238783E122516FC400BD519F /* Assets.xcassets */; };
+		238783E522516FC400BD519F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 238783E322516FC400BD519F /* MainMenu.xib */; };
+		238783E822516FC400BD519F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 238783E722516FC400BD519F /* main.m */; };
+		238783EF22516FDB00BD519F /* temp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238783EE22516FDB00BD519F /* temp.swift */; };
+		238783F02251701100BD519F /* DSFAttributedStringStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CAA69022498FEF005B20AF /* DSFAttributedStringStream.swift */; };
 		23CAA66E22498FBE005B20AF /* DSFAttributedStringStream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23CAA66422498FBE005B20AF /* DSFAttributedStringStream.framework */; };
 		23CAA67322498FBE005B20AF /* DSFAttributedStringStreamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CAA67222498FBE005B20AF /* DSFAttributedStringStreamTests.swift */; };
 		23CAA67522498FBE005B20AF /* DSFAttributedStringStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 23CAA66722498FBE005B20AF /* DSFAttributedStringStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -34,6 +40,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		238783DC22516FC300BD519F /* DSFAttributeStringStream Objc Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DSFAttributeStringStream Objc Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		238783DE22516FC400BD519F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		238783DF22516FC400BD519F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		238783E122516FC400BD519F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		238783E422516FC400BD519F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		238783E622516FC400BD519F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		238783E722516FC400BD519F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		238783E922516FC400BD519F /* DSFAttributeStringStream_Objc_Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DSFAttributeStringStream_Objc_Demo.entitlements; sourceTree = "<group>"; };
+		238783ED22516FDB00BD519F /* DSFAttributeStringStream Objc Demo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DSFAttributeStringStream Objc Demo-Bridging-Header.h"; sourceTree = "<group>"; };
+		238783EE22516FDB00BD519F /* temp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = temp.swift; sourceTree = "<group>"; };
 		23CAA66422498FBE005B20AF /* DSFAttributedStringStream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DSFAttributedStringStream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		23CAA66722498FBE005B20AF /* DSFAttributedStringStream.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSFAttributedStringStream.h; sourceTree = "<group>"; };
 		23CAA66822498FBE005B20AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -59,6 +75,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		238783D922516FC300BD519F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		23CAA66122498FBE005B20AF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -91,6 +114,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		238783DD22516FC400BD519F /* DSFAttributeStringStream Objc Demo */ = {
+			isa = PBXGroup;
+			children = (
+				238783DE22516FC400BD519F /* AppDelegate.h */,
+				238783DF22516FC400BD519F /* AppDelegate.m */,
+				238783E122516FC400BD519F /* Assets.xcassets */,
+				238783E322516FC400BD519F /* MainMenu.xib */,
+				238783E622516FC400BD519F /* Info.plist */,
+				238783E722516FC400BD519F /* main.m */,
+				238783E922516FC400BD519F /* DSFAttributeStringStream_Objc_Demo.entitlements */,
+				238783EE22516FDB00BD519F /* temp.swift */,
+				238783ED22516FDB00BD519F /* DSFAttributeStringStream Objc Demo-Bridging-Header.h */,
+			);
+			path = "DSFAttributeStringStream Objc Demo";
+			sourceTree = "<group>";
+		};
 		23CAA65A22498FBE005B20AF = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +139,7 @@
 				23CAA67122498FBE005B20AF /* DSFAttributedStringStreamTests */,
 				23CAA68322498FE5005B20AF /* DSFAttributedStringStream Demo */,
 				23E0D87022503FEC005ACFCB /* DSFAttributedStringStream iOS Demo */,
+				238783DD22516FC400BD519F /* DSFAttributeStringStream Objc Demo */,
 				23CAA66522498FBE005B20AF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -111,6 +151,7 @@
 				23CAA66D22498FBE005B20AF /* DSFAttributedStringStreamTests.xctest */,
 				23CAA68222498FE4005B20AF /* DSFAttributedStringStream Demo.app */,
 				23E0D86F22503FEC005ACFCB /* DSFAttributedStringStream iOS Demo.app */,
+				238783DC22516FC300BD519F /* DSFAttributeStringStream Objc Demo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -173,6 +214,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		238783DB22516FC300BD519F /* DSFAttributeStringStream Objc Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 238783EC22516FC400BD519F /* Build configuration list for PBXNativeTarget "DSFAttributeStringStream Objc Demo" */;
+			buildPhases = (
+				238783D822516FC300BD519F /* Sources */,
+				238783D922516FC300BD519F /* Frameworks */,
+				238783DA22516FC300BD519F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "DSFAttributeStringStream Objc Demo";
+			productName = "DSFAttributeStringStream Objc Demo";
+			productReference = 238783DC22516FC300BD519F /* DSFAttributeStringStream Objc Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
 		23CAA66322498FBE005B20AF /* DSFAttributedStringStream */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 23CAA67822498FBE005B20AF /* Build configuration list for PBXNativeTarget "DSFAttributedStringStream" */;
@@ -253,6 +311,10 @@
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Darren Ford";
 				TargetAttributes = {
+					238783DB22516FC300BD519F = {
+						CreatedOnToolsVersion = 10.2;
+						LastSwiftMigration = 1020;
+					};
 					23CAA66322498FBE005B20AF = {
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1010;
@@ -285,11 +347,21 @@
 				23CAA66C22498FBE005B20AF /* DSFAttributedStringStreamTests */,
 				23CAA68122498FE4005B20AF /* DSFAttributedStringStream Demo */,
 				23E0D86E22503FEC005ACFCB /* DSFAttributedStringStream iOS Demo */,
+				238783DB22516FC300BD519F /* DSFAttributeStringStream Objc Demo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		238783DA22516FC300BD519F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				238783E222516FC400BD519F /* Assets.xcassets in Resources */,
+				238783E522516FC400BD519F /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		23CAA66222498FBE005B20AF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -326,6 +398,17 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		238783D822516FC300BD519F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				238783E822516FC400BD519F /* main.m in Sources */,
+				238783E022516FC400BD519F /* AppDelegate.m in Sources */,
+				238783F02251701100BD519F /* DSFAttributedStringStream.swift in Sources */,
+				238783EF22516FDB00BD519F /* temp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		23CAA66022498FBE005B20AF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -372,6 +455,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		238783E322516FC400BD519F /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				238783E422516FC400BD519F /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
 		23CAA68822498FE5005B20AF /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -399,6 +490,49 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		238783EA22516FC400BD519F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "DSFAttributeStringStream Objc Demo/DSFAttributeStringStream_Objc_Demo.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 3L6RK3LGGW;
+				INFOPLIST_FILE = "DSFAttributeStringStream Objc Demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.DSFAttributeStringStream-Objc-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DSFAttributeStringStream Objc Demo/DSFAttributeStringStream Objc Demo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		238783EB22516FC400BD519F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "DSFAttributeStringStream Objc Demo/DSFAttributeStringStream_Objc_Demo.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 3L6RK3LGGW;
+				INFOPLIST_FILE = "DSFAttributeStringStream Objc Demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.DSFAttributeStringStream-Objc-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DSFAttributeStringStream Objc Demo/DSFAttributeStringStream Objc Demo-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		23CAA67622498FBE005B20AF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -697,6 +831,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		238783EC22516FC400BD519F /* Build configuration list for PBXNativeTarget "DSFAttributeStringStream Objc Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				238783EA22516FC400BD519F /* Debug */,
+				238783EB22516FC400BD519F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		23CAA65E22498FBE005B20AF /* Build configuration list for PBXProject "DSFAttributedStringStream" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
