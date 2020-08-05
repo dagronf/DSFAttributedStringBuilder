@@ -1,16 +1,15 @@
-import XCTest
 @testable import DSFAttributedStringBuilder
+import XCTest
 
 final class DSFAttributedStringBuilderTests: XCTestCase {
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        // XCTAssertEqual(DSFSecureTextField().text, "Hello, World!")
-    }
+	func testExample() {
+		// This is an example of a functional test case.
+		// Use XCTAssert and related functions to verify your tests produce the correct
+		// results.
+		// XCTAssertEqual(DSFSecureTextField().text, "Hello, World!")
+	}
 
 	func testStringAssign() {
-
 		let basicString = "This is a test"
 		let burmeseString = "မြန်မာနိုင်ငံတော်"
 
@@ -23,7 +22,7 @@ final class DSFAttributedStringBuilderTests: XCTestCase {
 
 		// Stream extension to NSAttributedString
 
-		let attrstr2 = NSAttributedString.build { (stream) in
+		let attrstr2 = NSAttributedString.build { stream in
 			stream.append(basicString)
 			stream.append(burmeseString)
 		}
@@ -35,7 +34,7 @@ final class DSFAttributedStringBuilderTests: XCTestCase {
 		let middleString = "မြန်မာနိုင်ငံတော် 👩‍👩‍👧‍👦 لوحة المفاتيح العربية"
 		let secondString = "اَلْفُصْحَىٰI don't like this"
 
-		let attrstr = NSAttributedString.build { (stream) in
+		let attrstr = NSAttributedString.build { stream in
 			stream.append(basicString)
 				.setUnderline(.double)
 				.append(middleString)
@@ -52,12 +51,12 @@ final class DSFAttributedStringBuilderTests: XCTestCase {
 		XCTAssertEqual(0, attrs.count)
 		XCTAssertNotEqual(attrs[.underlineStyle] as? Int, NSUnderlineStyle.double.rawValue)
 
-		// Check the first char of burmeseString
+		// Check the first char of middleString
 		attrs = attrstr.attributes(at: basicString.utf16.count, effectiveRange: &range)
 		XCTAssertEqual(1, attrs.count)
 		XCTAssertEqual(attrs[.underlineStyle] as? Int, NSUnderlineStyle.double.rawValue)
 
-		// Check the last char of burmeseString
+		// Check the last char of middleString
 		attrs = attrstr.attributes(at: basicString.utf16.count + middleString.utf16.count - 1, effectiveRange: &range)
 		XCTAssertEqual(1, attrs.count)
 		XCTAssertEqual(attrs[.underlineStyle] as? Int, NSUnderlineStyle.double.rawValue)
@@ -68,8 +67,9 @@ final class DSFAttributedStringBuilderTests: XCTestCase {
 		XCTAssertNotEqual(attrs[.underlineStyle] as? Int, NSUnderlineStyle.double.rawValue)
 	}
 
-
-    static var allTests = [
-        ("testExample", testExample),
-    ]
+	static var allTests = [
+		("testExample", testExample),
+		("testStringAssign", testStringAssign),
+		("testBasicStringStyling", testBasicStringStyling),
+	]
 }

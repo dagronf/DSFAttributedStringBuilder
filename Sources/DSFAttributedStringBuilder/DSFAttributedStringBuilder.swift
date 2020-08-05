@@ -27,22 +27,28 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-
 #if os(iOS) || os(tvOS)
-import UIKit
+	import UIKit
 #else
-import AppKit
+	import AppKit
 #endif
+
+public extension NSAttributedString {
+	static func build(creationBlock: (DSFAttributedStringBuilder) -> Void) -> NSAttributedString {
+		let stream = DSFAttributedStringBuilder()
+		creationBlock(stream)
+		return stream.attributed
+	}
+}
 
 @objc public class DSFAttributedStringBuilder: NSObject {
-
-#if os(iOS) || os(tvOS)
-	public typealias FontType = UIFont
-	public typealias ColorType = UIColor
-#else
-	public typealias FontType = NSFont
-	public typealias ColorType = NSColor
-#endif
+	#if os(iOS) || os(tvOS)
+		public typealias FontType = UIFont
+		public typealias ColorType = UIColor
+	#else
+		public typealias FontType = NSFont
+		public typealias ColorType = NSColor
+	#endif
 
 	private struct Attribute {
 		let key: NSAttributedString.Key
@@ -54,7 +60,7 @@ import AppKit
 	private var attrs: [Attribute] = []
 	private var text = NSMutableAttributedString()
 
-	/// Returns an attributed string style to match
+	/// Returns an attributed string style matching the current content
 	@objc public var attributed: NSAttributedString {
 		let result = self.text.mutableCopy() as! NSMutableAttributedString
 		for item in self.attrs {
@@ -63,13 +69,11 @@ import AppKit
 		}
 		return result
 	}
-
 }
 
-// MARK: Appending text and images
+// MARK: Appending text
 
 public extension DSFAttributedStringBuilder {
-
 	/// Append a string to the stream.  The text will be styled using the currently active styles
 	@discardableResult
 	@objc func append(_ rhs: String) -> DSFAttributedStringBuilder {
@@ -90,52 +94,11 @@ public extension DSFAttributedStringBuilder {
 		self.append("\t")
 		return self
 	}
-
-	#if os(macOS)
-
-	/// Add an image at the current location
-	@discardableResult
-	@objc(appendImage:) func append(_ rhs: NSImage) -> DSFAttributedStringBuilder {
-		self.append(rhs, rhs.size)
-		return self
-	}
-
-	/// Add an image to the stream, sizing to the specified CGSize
-	@discardableResult
-	@objc(appendScaledImage::) func append(_ image: NSImage, _ size: CGSize) -> DSFAttributedStringBuilder {
-		let attachment = NSTextAttachment()
-		let flipped = NSImage(size: size, flipped: false, drawingHandler: { (rect: NSRect) -> Bool in
-			NSGraphicsContext.current?.cgContext.translateBy(x: 0, y: size.height)
-			NSGraphicsContext.current?.cgContext.scaleBy(x: 1, y: -1)
-			image.draw(in: rect)
-			return true
-		})
-
-		attachment.image = flipped
-		self.text.append(NSAttributedString(attachment: attachment))
-		return self
-	}
-
-	#elseif os(iOS) || os(tvOS)
-
-	/// Add an image at the current location
-	@discardableResult
-	@objc(appendImage:) func append(_ rhs: UIImage) -> DSFAttributedStringBuilder {
-		let attachment = NSTextAttachment()
-		attachment.image = rhs
-		attachment.bounds = CGRect(x: 0.0, y: 0.0, width: rhs.size.width, height: rhs.size.height)
-		self.text.append(NSAttributedString(attachment: attachment))
-		return self
-	}
-
-	#endif
-
 }
 
 // MARK: Setting and unsetting styles
 
 public extension DSFAttributedStringBuilder {
-
 	@discardableResult
 	@objc(setStyle::) func set(_ key: NSAttributedString.Key, _ value: Any) -> DSFAttributedStringBuilder {
 		self.add(key: key, value: value)
@@ -200,21 +163,6 @@ public extension DSFAttributedStringBuilder {
 	}
 }
 
-public extension DSFAttributedStringBuilder {
-
-	@discardableResult
-	func setUnderline(_ style: NSUnderlineStyle) -> DSFAttributedStringBuilder {
-		self.add(key: .underlineStyle, value: style.rawValue)
-		return self
-	}
-
-	func unsetUnderline() -> DSFAttributedStringBuilder {
-		self.remove(key: .underlineStyle)
-		return self
-	}
-}
-
-
 private extension DSFAttributedStringBuilder {
 	func add(key: NSAttributedString.Key, value: Any) {
 		self.attrs.append(Attribute(key: key, value: value, startPos: self.text.length))
@@ -230,7 +178,7 @@ private extension DSFAttributedStringBuilder {
 	@discardableResult
 	func remove(key: NSAttributedString.Key) -> DSFAttributedStringBuilder {
 		for i in 0 ..< attrs.count {
-			if attrs[i].length == -1 && attrs[i].key == key {
+			if attrs[i].length == -1, attrs[i].key == key {
 				attrs[i].length = self.text.length - attrs[i].startPos
 			}
 		}
@@ -248,57 +196,129 @@ private extension DSFAttributedStringBuilder {
 	}
 }
 
-// MARK: Convenience methods
+// MARK: - Convenience methods
 
-extension DSFAttributedStringBuilder {
+// MARK: Image conveniences
+
+public extension DSFAttributedStringBuilder {
+	#if os(macOS)
+
+		/// Add an image at the current location
+		@discardableResult
+		@objc(appendImage:) func append(_ rhs: NSImage) -> DSFAttributedStringBuilder {
+			self.append(rhs, rhs.size)
+			return self
+		}
+
+		/// Add an image to the stream, sizing to the specified CGSize
+		@discardableResult
+		@objc(appendScaledImage::) func append(_ image: NSImage, _ size: CGSize) -> DSFAttributedStringBuilder {
+			let attachment = NSTextAttachment()
+			let flipped = NSImage(size: size, flipped: false, drawingHandler: { (rect: NSRect) -> Bool in
+				NSGraphicsContext.current?.cgContext.translateBy(x: 0, y: size.height)
+				NSGraphicsContext.current?.cgContext.scaleBy(x: 1, y: -1)
+				image.draw(in: rect)
+				return true
+			})
+
+			attachment.image = flipped
+			self.text.append(NSAttributedString(attachment: attachment))
+			return self
+		}
+
+	#elseif os(iOS) || os(tvOS)
+
+		/// Add an image at the current location
+		@discardableResult
+		@objc(appendImage:) func append(_ rhs: UIImage) -> DSFAttributedStringBuilder {
+			let attachment = NSTextAttachment()
+			attachment.image = rhs
+			attachment.bounds = CGRect(x: 0.0, y: 0.0, width: rhs.size.width, height: rhs.size.height)
+			self.text.append(NSAttributedString(attachment: attachment))
+			return self
+		}
+
+	#endif
+}
+
+// MARK: Underline conveniences
+
+public extension DSFAttributedStringBuilder {
+	@discardableResult
+	func setUnderline(_ style: NSUnderlineStyle, color: ColorType? = nil) -> DSFAttributedStringBuilder {
+		self.add(key: .underlineStyle, value: style.rawValue)
+		if let color = color {
+			self.add(key: .underlineColor, value: color)
+		}
+		return self
+	}
 
 	@discardableResult
-	@objc public func link(url: URL, text: String? = nil) -> DSFAttributedStringBuilder {
+	func unsetUnderline() -> DSFAttributedStringBuilder {
+		self.remove(key: .underlineStyle)
+		self.remove(key: .underlineColor)
+		return self
+	}
+}
+
+// MARK: Link conveniences
+
+public extension DSFAttributedStringBuilder {
+	/// Append a link to the attibuted string
+	/// - Parameters:
+	///   - url: The URL to attach to the link
+	///   - text: The text to display for the link. If nil, displays the text of the link
+	/// - Returns: The builder object
+	@discardableResult
+	@objc func link(url: URL, text: String? = nil) -> DSFAttributedStringBuilder {
 		self.add(key: .link, value: url)
 		if let text = text {
 			self.append(text)
-		}
-		else {
+		} else {
 			self.append("\(url)")
 		}
 		self.remove(key: .link)
 		return self
 	}
+}
 
+// MARK: Shadow conveniences
+
+extension NSShadow {
+	static func build(_ configureBlock: (NSShadow) -> Void) -> NSShadow {
+		let obj = NSShadow()
+		configureBlock(obj)
+		return obj
+	}
+}
+
+public extension DSFAttributedStringBuilder {
+	/// Attach a shadow
+	/// - Parameters:
+	///   - configureBlock: A block where you can configure the parameters of the shadow
+	/// - Returns: The shadow object
 	@discardableResult
-	@objc public func shadow(_ configureBlock: (NSShadow) -> Void) -> NSShadow {
+	@objc func shadow(_ configureBlock: (NSShadow) -> Void) -> NSShadow {
 		let obj = NSShadow()
 		configureBlock(obj)
 		self.add(key: .shadow, value: obj)
 		return obj
 	}
 
+	/// Remove a shadow
+	/// - Returns: The shadow object
 	@discardableResult
-	@objc public func unsetShadow() -> DSFAttributedStringBuilder {
+	@objc func unsetShadow() -> DSFAttributedStringBuilder {
 		self.remove(key: .shadow)
 		return self
 	}
 }
 
-public extension NSAttributedString {
-	static func build(creationBlock: (DSFAttributedStringBuilder) -> Void) -> NSAttributedString {
-		let stream = DSFAttributedStringBuilder()
-		creationBlock(stream)
-		return stream.attributed
-	}
-}
+// MARK: Paragraph conveniences
 
 extension NSParagraphStyle {
 	static func build(_ configureBlock: (NSMutableParagraphStyle) -> Void) -> NSParagraphStyle {
 		let obj = NSMutableParagraphStyle()
-		configureBlock(obj)
-		return obj
-	}
-}
-
-extension NSShadow {
-	static func build(_ configureBlock: (NSShadow) -> Void) -> NSShadow {
-		let obj = NSShadow()
 		configureBlock(obj)
 		return obj
 	}

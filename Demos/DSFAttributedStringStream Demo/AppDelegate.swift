@@ -96,7 +96,8 @@ extension AppDelegate {
 		}
 
 		let secondSegment = NSAttributedString.build { stream in
-			stream.set(Styles.P)
+			stream
+				.set(Styles.P)
 				.set(Styles.underline())
 				.append("Simple test using abstract calls")
 				.unset(Styles.underline())
@@ -125,7 +126,8 @@ extension AppDelegate {
 
 		let replaceable = "ᎤᎵᎩᏳᏍᎠᏅᏁ"
 		let thirdSegment = NSAttributedString.build { stream in
-			stream.set(Styles.P)
+			stream
+				.set(Styles.P)
 				.append("｡  🎀  𝒯𝒽𝒾𝓈 𝒾𝓈 𝒶 𝓉𝑒𝓈𝓉  🎀  ｡")
 				.set([.obliqueness: -0.1])
 				.append("|Fish")
