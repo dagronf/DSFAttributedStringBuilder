@@ -20,7 +20,7 @@ A simple Swift/Objective-C NSAttributedString builder simplifying creation of a 
 </p>
 
 ```swift
-let featuredURL = URL(string: "https://github.com/dagronf/DSFAttributedStringStream")!
+let featuredURL = URL(string: "https://github.com/dagronf/DSFAttributedStringBuilder")!
 let attributedString = NSAttributedString.build {
     $0.append(">>> To learn more about attributed string builder, ") 
     $0.link(url: featuredURL, text: "Click here")
@@ -29,7 +29,7 @@ let attributedString = NSAttributedString.build {
 ```
 generates
 
-\>\>\> To learn more about DSFAttributedStringBuilder, [click here](https://github.com/dagronf/DSFAttributedStringStream).
+\>\>\> To learn more about DSFAttributedStringBuilder, [click here](https://github.com/dagronf/DSFAttributedStringBuilder).
 
 
 ## Why?
@@ -255,31 +255,31 @@ let attributedString = NSAttributedString.build {
 A simple objective-c example
 
 ```objective-c
-DSFAttributedStringStream* stream = [[DSFAttributedStringStream alloc] init];
+DSFAttributedStringBuilder* builder = [[DSFAttributedStringBuilder alloc] init];
 
-[stream setFont:[NSFont systemFontOfSize:32]];
-[stream setColor:[NSColor textColor]];
-[stream setStyle:NSUnderlineStyleAttributeName:@(NSUnderlineStyleSingle)];
-[stream append:@"Heading"];
-[stream unsetStyle:NSUnderlineStyleAttributeName];
-[stream append:@" "];
-[stream appendScaledImage:[NSImage imageNamed:NSImageNameInfo]:CGSizeMake(28, 28)];
-[stream append:@" With "];
-[stream setColor:[NSColor systemBlueColor]];
-[stream setStyle:NSObliquenessAttributeName:@(0.2)];
-[stream append:@"Image"];
-[stream unsetAll];
+[builder setFont:[NSFont systemFontOfSize:32]];
+[builder setColor:[NSColor textColor]];
+[builder setStyle:NSUnderlineStyleAttributeName:@(NSUnderlineStyleSingle)];
+[builder append:@"Heading"];
+[builder unsetStyle:NSUnderlineStyleAttributeName];
+[builder append:@" "];
+[builder appendScaledImage:[NSImage imageNamed:NSImageNameInfo]:CGSizeMake(28, 28)];
+[builder append:@" With "];
+[builder setColor:[NSColor systemBlueColor]];
+[builder setStyle:NSObliquenessAttributeName:@(0.2)];
+[builder append:@"Image"];
+[builder unsetAll];
 
-[[stream endl] endl];
+[[builder endl] endl];
 
 NSMutableParagraphStyle* style = [[NSMutableParagraphStyle alloc] init];
 [style setAlignment:NSTextAlignmentRight];
-[stream setStyle:NSParagraphStyleAttributeName:style];
-[stream setColor:[NSColor textColor]];
-[stream append:@"﷽"];
-[[stream endl] endl];
+[builder setStyle:NSParagraphStyleAttributeName:style];
+[builder setColor:[NSColor textColor]];
+[builder append:@"﷽"];
+[[builder endl] endl];
 
-NSAttributedString* attributedString = [stream attributed];
+NSAttributedString* attributedString = [builder attributed];
 ```
 
 # License
