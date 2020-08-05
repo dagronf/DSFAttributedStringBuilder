@@ -1,6 +1,6 @@
-# DSFAttributedStringStream
+# DSFAttributedStringBuilder
 
-A simple Swift NSAttributedString wrapper to simplify creation of a styled string.
+A simple Swift/Objective-C NSAttributedString builder simplifying creation of a styled `NSAttributedString`.
 
 <p align="center">
     <img src="https://img.shields.io/github/v/tag/dagronf/DSFAttributedStringStream" />
@@ -12,6 +12,7 @@ A simple Swift NSAttributedString wrapper to simplify creation of a styled strin
 
 <p align="center">
     <img src="https://img.shields.io/badge/Swift-5.0+-orange.svg" />
+    <img src="https://img.shields.io/badge/ObjectiveC-compatible-pink.svg" />
     <img src="https://img.shields.io/badge/License-MIT-lightgrey" />
     <a href="https://swift.org/package-manager">
         <img src="https://img.shields.io/badge/spm-compatible-brightgreen.svg?style=flat" alt="Swift Package Manager" />
@@ -19,7 +20,7 @@ A simple Swift NSAttributedString wrapper to simplify creation of a styled strin
 </p>
 
 ```swift
-let attributedString = NSAttributedString.stream {
+let attributedString = NSAttributedString.build {
    $0.set(NSColor.blue)
      .set(NSFont.systemFont(ofSize: 12))
      .append("Blue Text")
@@ -30,11 +31,11 @@ I wanted to be able to use attributed strings within one of my projects, however
 
 I also wanted a _relatively_ safe method for defining the string.  I really like the idea of using HTML style tags, but this would require string parsing to determine offsets and handling parsing errors.
 
-This class is designed as a very simple lightweight NSAttributedString creator class.
+This class is designed as a very simple lightweight `NSAttributedString` creator.
 
 ```swift
 let attributedString = 
-   NSAttributedString.stream {
+   NSAttributedString.build {
       $0.set(NSFont.boldSystemFont(ofSize: 12))
       $0.append(NSLocalizedString("Important!", comment: "Important text"))
 }
@@ -59,7 +60,7 @@ Add `Sources/DSFAttributedStringStream/DSFAttributedStringStream.swift` to your 
 Appends text to the stream. The text will be styled using the currently active styles. For example,
 
 ```swift
-let result = NSAttributedString.stream {
+let result = NSAttributedString.build {
    ...
 	$0.append("This is a test")
    ...
@@ -71,7 +72,7 @@ let result = NSAttributedString.stream {
 Appends an image to the stream. This can be either NSImage or UIImage
 
 ```swift
-let result = NSAttributedString.stream {
+let result = NSAttributedString.build {
    ...
    let myImage = NSImage(named: NSImage.bookmarksTemplateName)!
    $0.append(myImage)
@@ -117,7 +118,7 @@ Calling `.unsetAll()` turns off all attributes at the current position.
 #### Example: Italicize a section of text
 
 ```swift
-let attributedString = NSAttributedString.stream { stream in
+let attributedString = NSAttributedString.build { stream in
    stream.set(NSColor.textColor)
       .append("This is ")               // Add some plain text
       .set([.obliqueness: 0.1])         // Turn on italic
@@ -131,7 +132,7 @@ let attributedString = NSAttributedString.stream { stream in
 #### Example: Add a tooltip to some text
 
 ```swift
-let attributedString = NSAttributedString.stream { 
+let attributedString = NSAttributedString.build { 
     $0.set(NSColor.textColor)
     $0.set(NSFont.systemFont(ofSize: NSFont.systemFontSize))
     $0.append("This could be better performed using a ")
@@ -152,7 +153,7 @@ let attributedString = NSAttributedString.stream {
 Appends `text` to the stream, applying a link `URL` to the text.  The link attribute is automatically unset at the end of `text`.
 
 ```swift
-let attributedString = NSAttributedString.stream {
+let attributedString = NSAttributedString.build {
    $0.append("To visit our website, ")
    $0.link(text: "click here", url: URL(string: "https://apple.com")!)
 }
@@ -161,7 +162,7 @@ let attributedString = NSAttributedString.stream {
 Or to simply add a link with the link URL
 
 ```swift
-let attributedString = NSAttributedString.stream {
+let attributedString = NSAttributedString.build {
    $0.link(url: URL(string: "https://swift.org/")!)
 }
 ```
@@ -175,8 +176,8 @@ If text is not supplied, the text reflects the URL
 `NSShadow` has a number of attributes which need to be defined upfront before it can be used.
 
 ```swift
-let attributedString = NSAttributedString.stream { stream in
-   stream.set(NSShadow.stream { (shadow) in
+let attributedString = NSAttributedString.build { stream in
+   stream.set(NSShadow.build { (shadow) in
                  shadow.shadowColor = NSColor.disabledControlTextColor
                  shadow.shadowOffset = NSSize(width: 1, height: -1)
                  shadow.shadowBlurRadius = 3.0
@@ -189,8 +190,8 @@ let attributedString = NSAttributedString.stream { stream in
 
 
 ```swift
-let attributedString = NSAttributedString.stream { stream in
-   stream.set(NSParagraphStyle.stream { style in
+let attributedString = NSAttributedString.build { stream in
+   stream.set(NSParagraphStyle.build { style in
 				style.alignment = .center
 			})
    stream.append("This is some centered text")
@@ -228,7 +229,7 @@ class Styles {
    }
 }
 	
-let attributedString = NSAttributedString.stream {
+let attributedString = NSAttributedString.build {
    $0.set(Styles.P).set(Styles.underline())
    $0.append("Simple test using basic style sheet")
    $0.unset(Styles.underline()).endl().endl()
@@ -278,7 +279,7 @@ NSAttributedString* attributedString = [stream attributed];
 ```
 MIT License
 
-Copyright (c) 2019 Darren Ford
+Copyright (c) 2020 Darren Ford
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

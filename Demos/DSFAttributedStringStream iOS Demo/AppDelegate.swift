@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  DSFAttributedStringStream iOS Demo
+//  DSFAttributedStringBuilder iOS Demo
 //
 //  Created by Darren Ford on 31/3/19.
 //  Copyright © 2019 Darren Ford. All rights reserved.

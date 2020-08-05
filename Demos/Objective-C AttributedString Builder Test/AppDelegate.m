@@ -1,19 +1,21 @@
 //
 //  AppDelegate.m
-//  DSFAttributeStringStream Objc Demo
+//  Objective-C AttributedString Builder Test
 //
-//  Created by Darren Ford on 1/4/19.
-//  Copyright © 2019 Darren Ford. All rights reserved.
+//  Created by Darren Ford on 5/8/20.
+//  Copyright © 2020 Darren Ford. All rights reserved.
 //
 
 #import "AppDelegate.h"
 
-#import "DSFAttributeStringStream_Objc_Demo-Swift.h"
+#import "Objective_C_AttributedString_Builder_Test-Swift.h"
 
 @interface AppDelegate ()
 
-@property (weak) IBOutlet NSWindow *window;
+@property (strong) IBOutlet NSWindow *window;
+
 @property (unsafe_unretained) IBOutlet NSTextView *textView;
+
 
 @end
 
@@ -22,7 +24,17 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 	// Insert code here to initialize your application
 
-	DSFAttributedStringStream* stream = [[DSFAttributedStringStream alloc] init];
+	[self generateAttributedString];
+}
+
+
+- (void)applicationWillTerminate:(NSNotification *)aNotification {
+	// Insert code here to tear down your application
+}
+
+
+- (void)generateAttributedString {
+	DSFAttributedStringBuilder* stream = [[DSFAttributedStringBuilder alloc] init];
 
 	[stream setFont:[NSFont systemFontOfSize:32]];
 	[stream setColor:[NSColor textColor]];
@@ -74,11 +86,5 @@
 	NSAttributedString* data = [stream attributed];
 	[[[self textView] textStorage] setAttributedString:data];
 }
-
-
-- (void)applicationWillTerminate:(NSNotification *)aNotification {
-	// Insert code here to tear down your application
-}
-
 
 @end

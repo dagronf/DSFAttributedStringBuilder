@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  DSFAttributedStringStream iOS Demo
+//  DSFAttributedStringBuilder iOS Demo
 //
 //  Created by Darren Ford on 31/3/19.
 //  Copyright © 2019 Darren Ford. All rights reserved.
@@ -54,7 +54,7 @@ extension ViewController {
 
 	func configure() {
 
-		let firstSegment = NSAttributedString.stream {
+		let firstSegment = NSAttributedString.build {
 			$0.set(Styles.H1)
 			$0.link(url: URL(string: "https://apple.com")!, text: "Click here")
 			$0.append(" to visit our website").endl().endl()
@@ -76,7 +76,7 @@ extension ViewController {
 			$0.endl().endl()
 		}
 
-		let secondSegment = NSAttributedString.stream { stream in
+		let secondSegment = NSAttributedString.build { stream in
 			stream.set(Styles.P)
 				.set(Styles.underline())
 				.append("Simple test using abstract calls")
@@ -84,7 +84,7 @@ extension ViewController {
 				.endl().endl()
 
 				.set(UIColor.green)
-				.set(NSParagraphStyle.stream { obj in
+				.set(NSParagraphStyle.build { obj in
 					obj.alignment = .center
 				})
 
@@ -103,7 +103,7 @@ extension ViewController {
 		}
 
 		let replaceable = "ᎤᎵᎩᏳᏍᎠᏅᏁ"
-		let thirdSegment = NSAttributedString.stream { stream in
+		let thirdSegment = NSAttributedString.build { stream in
 			stream.set(Styles.P)
 				.append("｡  🎀  𝒯𝒽𝒾𝓈 𝒾𝓈 𝒶 𝓉𝑒𝓈𝓉  🎀  ｡")
 				.set([.obliqueness: -0.1])
@@ -117,9 +117,9 @@ extension ViewController {
 				.append("٩(-̮̮̃-̃)۶ ٩(●̮̮̃•̃)۶ ٩(͡๏̯͡๏)۶ ٩(-̮̮̃•̃). \(replaceable) ").endl()
 		}
 
-		let fourthSegment = NSAttributedString.stream { stream in
+		let fourthSegment = NSAttributedString.build { stream in
 			stream.set(UIFont.boldSystemFont(ofSize: 55))
-				.set(NSShadow.stream { (shadow) in
+				.set(NSShadow.build { (shadow) in
 					shadow.shadowColor = UIColor.gray
 					shadow.shadowOffset = CGSize(width: 1, height: -1)
 					shadow.shadowBlurRadius = 3.0
@@ -127,23 +127,23 @@ extension ViewController {
 				.append("台北市立動物園的白手長").endl()
 		}
 
-		let fifthSegment = NSAttributedString.stream { stream in
-			stream.set(NSParagraphStyle.stream { obj in
+		let fifthSegment = NSAttributedString.build { stream in
+			stream.set(NSParagraphStyle.build { obj in
 				obj.alignment = .right
 			})
 				.set(UIColor.black)
 				.append("﷽").endl().endl()
 		}
 
-		let sixthSegment = NSAttributedString.stream {
+		let sixthSegment = NSAttributedString.build {
 			$0.set(UIFont.boldSystemFont(ofSize: 36))
 				.set(UIColor.black)
 				.append("And here is a centered image...").endl()
-				.set(NSParagraphStyle.stream { obj in
+				.set(NSParagraphStyle.build { obj in
 					obj.alignment = .center
 				})
 				.append(UIImage(named: "lego")!).endl().endl()
-				.set(NSParagraphStyle.stream { obj in
+				.set(NSParagraphStyle.build { obj in
 					obj.alignment = .left
 				})
 				.set(UIFont.boldSystemFont(ofSize: 24))

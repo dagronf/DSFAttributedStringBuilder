@@ -1,6 +1,6 @@
 //
-//  DSFAttributedStringStream.swift
-//  DSFAttributedStringStream
+//  DSFAttributedStringBuilder.swift
+//  DSFAttributedStringBuilder
 //
 //  Created by Darren Ford on 25/3/19.
 //  Copyright © 2019 Darren Ford. All rights reserved.
@@ -34,7 +34,7 @@ import UIKit
 import AppKit
 #endif
 
-@objc public class DSFAttributedStringStream: NSObject {
+@objc public class DSFAttributedStringBuilder: NSObject {
 
 #if os(iOS) || os(tvOS)
 	public typealias FontType = UIFont
@@ -68,25 +68,25 @@ import AppKit
 
 // MARK: Appending text and images
 
-public extension DSFAttributedStringStream {
+public extension DSFAttributedStringBuilder {
 
 	/// Append a string to the stream.  The text will be styled using the currently active styles
 	@discardableResult
-	@objc func append(_ rhs: String) -> DSFAttributedStringStream {
+	@objc func append(_ rhs: String) -> DSFAttributedStringBuilder {
 		self.text.append(NSAttributedString(string: rhs))
 		return self
 	}
 
 	/// Add a end-of-line character to the stream
 	@discardableResult
-	@objc func endl() -> DSFAttributedStringStream {
+	@objc func endl() -> DSFAttributedStringBuilder {
 		self.append("\n")
 		return self
 	}
 
 	/// Add a tab character to the stream
 	@discardableResult
-	@objc func tab() -> DSFAttributedStringStream {
+	@objc func tab() -> DSFAttributedStringBuilder {
 		self.append("\t")
 		return self
 	}
@@ -95,14 +95,14 @@ public extension DSFAttributedStringStream {
 
 	/// Add an image at the current location
 	@discardableResult
-	@objc(appendImage:) func append(_ rhs: NSImage) -> DSFAttributedStringStream {
+	@objc(appendImage:) func append(_ rhs: NSImage) -> DSFAttributedStringBuilder {
 		self.append(rhs, rhs.size)
 		return self
 	}
 
 	/// Add an image to the stream, sizing to the specified CGSize
 	@discardableResult
-	@objc(appendScaledImage::) func append(_ image: NSImage, _ size: CGSize) -> DSFAttributedStringStream {
+	@objc(appendScaledImage::) func append(_ image: NSImage, _ size: CGSize) -> DSFAttributedStringBuilder {
 		let attachment = NSTextAttachment()
 		let flipped = NSImage(size: size, flipped: false, drawingHandler: { (rect: NSRect) -> Bool in
 			NSGraphicsContext.current?.cgContext.translateBy(x: 0, y: size.height)
@@ -120,7 +120,7 @@ public extension DSFAttributedStringStream {
 
 	/// Add an image at the current location
 	@discardableResult
-	@objc(appendImage:) func append(_ rhs: UIImage) -> DSFAttributedStringStream {
+	@objc(appendImage:) func append(_ rhs: UIImage) -> DSFAttributedStringBuilder {
 		let attachment = NSTextAttachment()
 		attachment.image = rhs
 		attachment.bounds = CGRect(x: 0.0, y: 0.0, width: rhs.size.width, height: rhs.size.height)
@@ -134,93 +134,93 @@ public extension DSFAttributedStringStream {
 
 // MARK: Setting and unsetting styles
 
-public extension DSFAttributedStringStream {
+public extension DSFAttributedStringBuilder {
 
 	@discardableResult
-	@objc(setStyle::) func set(_ key: NSAttributedString.Key, _ value: Any) -> DSFAttributedStringStream {
+	@objc(setStyle::) func set(_ key: NSAttributedString.Key, _ value: Any) -> DSFAttributedStringBuilder {
 		self.add(key: key, value: value)
 		return self
 	}
 
 	@discardableResult
-	@objc(setStyles:) func set(_ rhs: [NSAttributedString.Key: Any]) -> DSFAttributedStringStream {
+	@objc(setStyles:) func set(_ rhs: [NSAttributedString.Key: Any]) -> DSFAttributedStringBuilder {
 		return self.add(rhs)
 	}
 
 	@discardableResult
-	@objc(setShadow:) func set(_ rhs: NSShadow) -> DSFAttributedStringStream {
+	@objc(setShadow:) func set(_ rhs: NSShadow) -> DSFAttributedStringBuilder {
 		self.add(key: .shadow, value: rhs)
 		return self
 	}
 
 	@discardableResult
-	@objc(setParagraphStyle:) func set(_ rhs: NSParagraphStyle) -> DSFAttributedStringStream {
+	@objc(setParagraphStyle:) func set(_ rhs: NSParagraphStyle) -> DSFAttributedStringBuilder {
 		self.add(key: NSAttributedString.Key.paragraphStyle, value: rhs)
 		return self
 	}
 
 	@discardableResult
-	@objc(setFont:) func set(_ rhs: FontType) -> DSFAttributedStringStream {
+	@objc(setFont:) func set(_ rhs: FontType) -> DSFAttributedStringBuilder {
 		self.add(key: NSAttributedString.Key.font, value: rhs)
 		return self
 	}
 
 	@discardableResult
-	@objc(setColor:) func set(_ rhs: ColorType) -> DSFAttributedStringStream {
+	@objc(setColor:) func set(_ rhs: ColorType) -> DSFAttributedStringBuilder {
 		self.add(key: NSAttributedString.Key.foregroundColor, value: rhs)
 		return self
 	}
 
 	/// 'unset' (turn off) the specified attributes from the current location onwards
 	@discardableResult
-	@objc(unsetStyles:) func unset(_ rhs: [NSAttributedString.Key: Any]) -> DSFAttributedStringStream {
+	@objc(unsetStyles:) func unset(_ rhs: [NSAttributedString.Key: Any]) -> DSFAttributedStringBuilder {
 		Array(rhs.keys).forEach { self.remove(key: $0) }
 		return self
 	}
 
 	/// 'unset' (turn off) the specified attributed key from the current location onwards
 	@discardableResult
-	@objc(unsetStyle:) func unset(_ rhs: NSAttributedString.Key) -> DSFAttributedStringStream {
+	@objc(unsetStyle:) func unset(_ rhs: NSAttributedString.Key) -> DSFAttributedStringBuilder {
 		self.remove(key: rhs)
 		return self
 	}
 
 	/// 'unset' (turn off) the specified attributed keys from the current location onwards
 	@discardableResult
-	@objc(unsetStyleArray:) func unset(_ rhs: [NSAttributedString.Key]) -> DSFAttributedStringStream {
+	@objc(unsetStyleArray:) func unset(_ rhs: [NSAttributedString.Key]) -> DSFAttributedStringBuilder {
 		rhs.forEach { self.remove(key: $0) }
 		return self
 	}
 
 	/// 'unset' (turn off) all of the styles currently active from the current location onwards
 	@discardableResult
-	@objc func unsetAll() -> DSFAttributedStringStream {
+	@objc func unsetAll() -> DSFAttributedStringBuilder {
 		self.removeAll()
 		return self
 	}
 }
 
-public extension DSFAttributedStringStream {
+public extension DSFAttributedStringBuilder {
 
 	@discardableResult
-	func setUnderline(_ style: NSUnderlineStyle) -> DSFAttributedStringStream {
+	func setUnderline(_ style: NSUnderlineStyle) -> DSFAttributedStringBuilder {
 		self.add(key: .underlineStyle, value: style.rawValue)
 		return self
 	}
 
-	func unsetUnderline() -> DSFAttributedStringStream {
+	func unsetUnderline() -> DSFAttributedStringBuilder {
 		self.remove(key: .underlineStyle)
 		return self
 	}
 }
 
 
-private extension DSFAttributedStringStream {
+private extension DSFAttributedStringBuilder {
 	func add(key: NSAttributedString.Key, value: Any) {
 		self.attrs.append(Attribute(key: key, value: value, startPos: self.text.length))
 	}
 
-	func add(_ attributes: [NSAttributedString.Key: Any]) -> DSFAttributedStringStream {
+	func add(_ attributes: [NSAttributedString.Key: Any]) -> DSFAttributedStringBuilder {
 		for item in attributes {
 			self.add(key: item.key, value: item.value)
 		}
@@ -228,7 +228,7 @@ private extension DSFAttributedStringStream {
 	}
 
 	@discardableResult
-	func remove(key: NSAttributedString.Key) -> DSFAttributedStringStream {
+	func remove(key: NSAttributedString.Key) -> DSFAttributedStringBuilder {
 		for i in 0 ..< attrs.count {
 			if attrs[i].length == -1 && attrs[i].key == key {
 				attrs[i].length = self.text.length - attrs[i].startPos
@@ -238,7 +238,7 @@ private extension DSFAttributedStringStream {
 	}
 
 	@discardableResult
-	func removeAll() -> DSFAttributedStringStream {
+	func removeAll() -> DSFAttributedStringBuilder {
 		for i in 0 ..< attrs.count {
 			if attrs[i].length == -1 {
 				attrs[i].length = self.text.length - attrs[i].startPos
@@ -250,10 +250,10 @@ private extension DSFAttributedStringStream {
 
 // MARK: Convenience methods
 
-extension DSFAttributedStringStream {
+extension DSFAttributedStringBuilder {
 
 	@discardableResult
-	@objc public func link(url: URL, text: String? = nil) -> DSFAttributedStringStream {
+	@objc public func link(url: URL, text: String? = nil) -> DSFAttributedStringBuilder {
 		self.add(key: .link, value: url)
 		if let text = text {
 			self.append(text)
@@ -274,22 +274,22 @@ extension DSFAttributedStringStream {
 	}
 
 	@discardableResult
-	@objc public func unsetShadow() -> DSFAttributedStringStream {
+	@objc public func unsetShadow() -> DSFAttributedStringBuilder {
 		self.remove(key: .shadow)
 		return self
 	}
 }
 
 public extension NSAttributedString {
-	static func stream(creationBlock: (DSFAttributedStringStream) -> Void) -> NSAttributedString {
-		let stream = DSFAttributedStringStream()
+	static func build(creationBlock: (DSFAttributedStringBuilder) -> Void) -> NSAttributedString {
+		let stream = DSFAttributedStringBuilder()
 		creationBlock(stream)
 		return stream.attributed
 	}
 }
 
 extension NSParagraphStyle {
-	static func stream(_ configureBlock: (NSMutableParagraphStyle) -> Void) -> NSParagraphStyle {
+	static func build(_ configureBlock: (NSMutableParagraphStyle) -> Void) -> NSParagraphStyle {
 		let obj = NSMutableParagraphStyle()
 		configureBlock(obj)
 		return obj
@@ -297,7 +297,7 @@ extension NSParagraphStyle {
 }
 
 extension NSShadow {
-	static func stream(_ configureBlock: (NSShadow) -> Void) -> NSShadow {
+	static func build(_ configureBlock: (NSShadow) -> Void) -> NSShadow {
 		let obj = NSShadow()
 		configureBlock(obj)
 		return obj

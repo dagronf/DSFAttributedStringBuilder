@@ -1,7 +1,7 @@
 import XCTest
-@testable import DSFAttributedStringStream
+@testable import DSFAttributedStringBuilder
 
-final class DSFAttributedStringStreamTests: XCTestCase {
+final class DSFAttributedStringBuilderTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
@@ -14,7 +14,7 @@ final class DSFAttributedStringStreamTests: XCTestCase {
 		let basicString = "This is a test"
 		let burmeseString = "မြန်မာနိုင်ငံတော်"
 
-		let str = DSFAttributedStringStream()
+		let str = DSFAttributedStringBuilder()
 		str.append(basicString)
 		str.append(burmeseString)
 		let attrstr = str.attributed
@@ -23,7 +23,7 @@ final class DSFAttributedStringStreamTests: XCTestCase {
 
 		// Stream extension to NSAttributedString
 
-		let attrstr2 = NSAttributedString.stream { (stream) in
+		let attrstr2 = NSAttributedString.build { (stream) in
 			stream.append(basicString)
 			stream.append(burmeseString)
 		}
@@ -35,7 +35,7 @@ final class DSFAttributedStringStreamTests: XCTestCase {
 		let middleString = "မြန်မာနိုင်ငံတော် 👩‍👩‍👧‍👦 لوحة المفاتيح العربية"
 		let secondString = "اَلْفُصْحَىٰI don't like this"
 
-		let attrstr = NSAttributedString.stream { (stream) in
+		let attrstr = NSAttributedString.build { (stream) in
 			stream.append(basicString)
 				.setUnderline(.double)
 				.append(middleString)

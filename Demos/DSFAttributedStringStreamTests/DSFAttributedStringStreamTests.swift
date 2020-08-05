@@ -1,15 +1,15 @@
 //
-//  DSFAttributedStringStreamTests.swift
-//  DSFAttributedStringStreamTests
+//  DSFAttributedStringBuilderTests.swift
+//  DSFAttributedStringBuilderTests
 //
 //  Created by Darren Ford on 26/3/19.
 //  Copyright © 2019 Darren Ford. All rights reserved.
 //
 
 import XCTest
-@testable import DSFAttributedStringStream
+@testable import DSFAttributedStringBuilder
 
-class DSFAttributedStringStreamTests: XCTestCase {
+class DSFAttributedStringBuilderTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
