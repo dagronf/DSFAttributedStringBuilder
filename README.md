@@ -20,12 +20,19 @@ A simple Swift/Objective-C NSAttributedString builder simplifying creation of a 
 </p>
 
 ```swift
+let featuredURL = URL(string: "https://github.com/dagronf/DSFAttributedStringStream")!
 let attributedString = NSAttributedString.build {
-   $0.set(NSColor.blue)
-     .set(NSFont.systemFont(ofSize: 12))
-     .append("Blue Text")
+    $0.append(">>> To learn more about attributed string builder, ") 
+    $0.link(url: featuredURL, text: "Click here")
+    $0.append(".")
 }
 ```
+generates
+
+\>\>\> To learn more about DSFAttributedStringBuilder, [click here](https://github.com/dagronf/DSFAttributedStringStream).
+
+
+## Why?
 
 I wanted to be able to use attributed strings within one of my projects, however I kept getting stung with trying to work out offsets (especially regarding complex characters such as emoji, and even moreso when parts of the string were dependent on variable values etc.).  And as the string gets longer, slight changes to the text have major impacts.
 
@@ -37,7 +44,8 @@ This class is designed as a very simple lightweight `NSAttributedString` creator
 let attributedString = 
    NSAttributedString.build {
       $0.set(NSFont.boldSystemFont(ofSize: 12))
-      $0.append(NSLocalizedString("Important!", comment: "Important text"))
+        .setUnderline(.double)
+        .append(NSLocalizedString("Important!", comment: "Important text"))
 }
 ```
 
