@@ -30,58 +30,31 @@
 
 #if os(iOS) || os(tvOS)
 import UIKit
-public typealias FontSpecifier = UIFont
-public typealias ColorSpecifier = UIColor
 #else
 import AppKit
-public typealias FontSpecifier = NSFont
-public typealias ColorSpecifier = NSColor
 #endif
-
-extension NSAttributedString {
-	static func stream(creationBlock: (DSFAttributedStringStream) -> Void) -> NSAttributedString {
-		let stream = DSFAttributedStringStream()
-		creationBlock(stream)
-		return stream.attributed
-	}
-}
 
 @objc public class DSFAttributedStringStream: NSObject {
 
-	fileprivate var attrs: [(key: NSAttributedString.Key, value: Any, startPos: Int, length: Int)] = []
-	fileprivate var text = NSMutableAttributedString()
+#if os(iOS) || os(tvOS)
+	public typealias FontType = UIFont
+	public typealias ColorType = UIColor
+#else
+	public typealias FontType = NSFont
+	public typealias ColorType = NSColor
+#endif
 
-	fileprivate func add(key: NSAttributedString.Key, value: Any) {
-		self.attrs.append((key, value, self.text.length, -1))
+	private struct Attribute {
+		let key: NSAttributedString.Key
+		let value: Any
+		let startPos: Int
+		var length: Int = -1
 	}
 
-	fileprivate func add(_ attributes: [NSAttributedString.Key: Any]) -> DSFAttributedStringStream {
-		for item in attributes {
-			self.add(key: item.key, value: item.value)
-		}
-		return self
-	}
+	private var attrs: [Attribute] = []
+	private var text = NSMutableAttributedString()
 
-	@discardableResult
-	fileprivate func remove(key: NSAttributedString.Key) -> DSFAttributedStringStream {
-		for i in 0 ..< attrs.count {
-			if attrs[i].length == -1 && attrs[i].key == key {
-				attrs[i].length = self.text.length - attrs[i].startPos
-			}
-		}
-		return self
-	}
-
-	@discardableResult
-	fileprivate func removeAll() -> DSFAttributedStringStream {
-		for i in 0 ..< attrs.count {
-			if attrs[i].length == -1 {
-				attrs[i].length = self.text.length - attrs[i].startPos
-			}
-		}
-		return self
-	}
-
+	/// Returns an attributed string style to match
 	@objc public var attributed: NSAttributedString {
 		let result = self.text.mutableCopy() as! NSMutableAttributedString
 		for item in self.attrs {
@@ -90,29 +63,14 @@ extension NSAttributedString {
 		}
 		return result
 	}
-}
 
-extension NSParagraphStyle {
-	static func stream(_ configureBlock: (NSMutableParagraphStyle) -> Void) -> NSParagraphStyle {
-		let obj = NSMutableParagraphStyle()
-		configureBlock(obj)
-		return obj
-	}
-}
-
-extension NSShadow {
-	static func stream(_ configureBlock: (NSShadow) -> Void) -> NSShadow {
-		let obj = NSShadow()
-		configureBlock(obj)
-		return obj
-	}
 }
 
 // MARK: Appending text and images
 
 public extension DSFAttributedStringStream {
 
-	/// Append a string to the stream.  The text is styled using the currently active styles
+	/// Append a string to the stream.  The text will be styled using the currently active styles
 	@discardableResult
 	@objc func append(_ rhs: String) -> DSFAttributedStringStream {
 		self.text.append(NSAttributedString(string: rhs))
@@ -176,68 +134,116 @@ public extension DSFAttributedStringStream {
 
 // MARK: Setting and unsetting styles
 
-extension DSFAttributedStringStream {
+public extension DSFAttributedStringStream {
 
 	@discardableResult
-	@objc(setStyle::) public func set(_ key: NSAttributedString.Key, _ value: Any) -> DSFAttributedStringStream {
+	@objc(setStyle::) func set(_ key: NSAttributedString.Key, _ value: Any) -> DSFAttributedStringStream {
 		self.add(key: key, value: value)
 		return self
 	}
 
 	@discardableResult
-	@objc(setStyles:) public func set(_ rhs: [NSAttributedString.Key: Any]) -> DSFAttributedStringStream {
+	@objc(setStyles:) func set(_ rhs: [NSAttributedString.Key: Any]) -> DSFAttributedStringStream {
 		return self.add(rhs)
 	}
 
 	@discardableResult
-	@objc(setShadow:) public func set(_ rhs: NSShadow) -> DSFAttributedStringStream {
+	@objc(setShadow:) func set(_ rhs: NSShadow) -> DSFAttributedStringStream {
 		self.add(key: .shadow, value: rhs)
 		return self
 	}
 
 	@discardableResult
-	@objc(setParagraphStyle:) public func set(_ rhs: NSParagraphStyle) -> DSFAttributedStringStream {
+	@objc(setParagraphStyle:) func set(_ rhs: NSParagraphStyle) -> DSFAttributedStringStream {
 		self.add(key: NSAttributedString.Key.paragraphStyle, value: rhs)
 		return self
 	}
 
 	@discardableResult
-	@objc(setFont:) public func set(_ rhs: FontSpecifier) -> DSFAttributedStringStream {
+	@objc(setFont:) func set(_ rhs: FontType) -> DSFAttributedStringStream {
 		self.add(key: NSAttributedString.Key.font, value: rhs)
 		return self
 	}
 
 	@discardableResult
-	@objc(setColor:) public func set(_ rhs: ColorSpecifier) -> DSFAttributedStringStream {
+	@objc(setColor:) func set(_ rhs: ColorType) -> DSFAttributedStringStream {
 		self.add(key: NSAttributedString.Key.foregroundColor, value: rhs)
 		return self
 	}
 
 	/// 'unset' (turn off) the specified attributes from the current location onwards
 	@discardableResult
-	@objc(unsetStyles:) public func unset(_ rhs: [NSAttributedString.Key: Any]) -> DSFAttributedStringStream {
+	@objc(unsetStyles:) func unset(_ rhs: [NSAttributedString.Key: Any]) -> DSFAttributedStringStream {
 		Array(rhs.keys).forEach { self.remove(key: $0) }
 		return self
 	}
 
 	/// 'unset' (turn off) the specified attributed key from the current location onwards
 	@discardableResult
-	@objc(unsetStyle:) public func unset(_ rhs: NSAttributedString.Key) -> DSFAttributedStringStream {
+	@objc(unsetStyle:) func unset(_ rhs: NSAttributedString.Key) -> DSFAttributedStringStream {
 		self.remove(key: rhs)
 		return self
 	}
 
 	/// 'unset' (turn off) the specified attributed keys from the current location onwards
 	@discardableResult
-	@objc(unsetStyleArray:) public func unset(_ rhs: [NSAttributedString.Key]) -> DSFAttributedStringStream {
+	@objc(unsetStyleArray:) func unset(_ rhs: [NSAttributedString.Key]) -> DSFAttributedStringStream {
 		rhs.forEach { self.remove(key: $0) }
 		return self
 	}
 
 	/// 'unset' (turn off) all of the styles currently active from the current location onwards
 	@discardableResult
-	@objc public func unsetAll() -> DSFAttributedStringStream {
+	@objc func unsetAll() -> DSFAttributedStringStream {
 		self.removeAll()
+		return self
+	}
+}
+
+public extension DSFAttributedStringStream {
+
+	@discardableResult
+	func setUnderline(_ style: NSUnderlineStyle) -> DSFAttributedStringStream {
+		self.add(key: .underlineStyle, value: style.rawValue)
+		return self
+	}
+
+	func unsetUnderline() -> DSFAttributedStringStream {
+		self.remove(key: .underlineStyle)
+		return self
+	}
+}
+
+
+private extension DSFAttributedStringStream {
+	func add(key: NSAttributedString.Key, value: Any) {
+		self.attrs.append(Attribute(key: key, value: value, startPos: self.text.length))
+	}
+
+	func add(_ attributes: [NSAttributedString.Key: Any]) -> DSFAttributedStringStream {
+		for item in attributes {
+			self.add(key: item.key, value: item.value)
+		}
+		return self
+	}
+
+	@discardableResult
+	func remove(key: NSAttributedString.Key) -> DSFAttributedStringStream {
+		for i in 0 ..< attrs.count {
+			if attrs[i].length == -1 && attrs[i].key == key {
+				attrs[i].length = self.text.length - attrs[i].startPos
+			}
+		}
+		return self
+	}
+
+	@discardableResult
+	func removeAll() -> DSFAttributedStringStream {
+		for i in 0 ..< attrs.count {
+			if attrs[i].length == -1 {
+				attrs[i].length = self.text.length - attrs[i].startPos
+			}
+		}
 		return self
 	}
 }
@@ -272,5 +278,28 @@ extension DSFAttributedStringStream {
 		self.remove(key: .shadow)
 		return self
 	}
+}
 
+public extension NSAttributedString {
+	static func stream(creationBlock: (DSFAttributedStringStream) -> Void) -> NSAttributedString {
+		let stream = DSFAttributedStringStream()
+		creationBlock(stream)
+		return stream.attributed
+	}
+}
+
+extension NSParagraphStyle {
+	static func stream(_ configureBlock: (NSMutableParagraphStyle) -> Void) -> NSParagraphStyle {
+		let obj = NSMutableParagraphStyle()
+		configureBlock(obj)
+		return obj
+	}
+}
+
+extension NSShadow {
+	static func stream(_ configureBlock: (NSShadow) -> Void) -> NSShadow {
+		let obj = NSShadow()
+		configureBlock(obj)
+		return obj
+	}
 }

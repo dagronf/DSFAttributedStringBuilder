@@ -137,31 +137,32 @@ extension ViewController {
 
 		let sixthSegment = NSAttributedString.stream {
 			$0.set(UIFont.boldSystemFont(ofSize: 36))
-			$0.set(UIColor.black)
-			$0.append("And here is a centered image...").endl()
-			$0.set(NSParagraphStyle.stream { obj in
-				obj.alignment = .center
-			})
-			$0.set(NSParagraphStyle.stream { obj in
-				obj.alignment = .left
-			})
-			$0.set(UIFont.boldSystemFont(ofSize: 24))
-			$0.append("Some text containing non-english characters").endl()
-			$0.set(UIFont.systemFont(ofSize: 16))
-			$0.append("Both names derive from the Bamar people ")
-			$0.set(UIColor.gray)
-			$0.append("(ဗမာလူမျိုး [bəmà lùmjó])")
-			$0.set(UIColor.black)
-			$0.append(", the largest ethnic group in Burma. The full official name of the country is the \"Republic of the Union of Myanmar\" ")
-			$0.set(UIColor.gray)
-			$0.append("(ပြည်ထောင်စုသမ္မတ မြန်မာနိုင်ငံတော် [pjìdàʊɴzṵ θàɴməda̰ mjəmà nàɪɴŋàɴdɔ̀])")
-			$0.set(UIColor.black)
-			$0.append(".").endl().endl()
+				.set(UIColor.black)
+				.append("And here is a centered image...").endl()
+				.set(NSParagraphStyle.stream { obj in
+					obj.alignment = .center
+				})
+				.append(UIImage(named: "lego")!).endl().endl()
+				.set(NSParagraphStyle.stream { obj in
+					obj.alignment = .left
+				})
+				.set(UIFont.boldSystemFont(ofSize: 24))
+				.append("Some text containing non-english characters").endl()
+				.set(UIFont.systemFont(ofSize: 16))
+				.append("Both names derive from the Bamar people ")
+				.set(UIColor.gray)
+				.append("(ဗမာလူမျိုး [bəmà lùmjó])")
+				.set(UIColor.black)
+				.append(", the largest ethnic group in Burma. The full official name of the country is the \"Republic of the Union of Myanmar\" ")
+				.set(UIColor.gray)
+				.append("(ပြည်ထောင်စုသမ္မတ မြန်မာနိုင်ငံတော် [pjìdàʊɴzṵ θàɴməda̰ mjəmà nàɪɴŋàɴdɔ̀])")
+				.set(UIColor.black)
+				.append(".").endl().endl()
 
-			$0.set(UIColor.black).set(UIFont.systemFont(ofSize: 24))
-			$0.append("Last sentence 🧖🏼‍♀️.  The final shriek should be red")
-			$0.set(UIColor.red).set(UIFont.boldSystemFont(ofSize: 64))
-			$0.append("!")
+				.set(UIColor.black).set(UIFont.systemFont(ofSize: 24))
+				.append("Last sentence 🧖🏼‍♀️.  The final shriek should be red")
+				.set(UIColor.red).set(UIFont.boldSystemFont(ofSize: 64))
+				.append("!")
 		}
 
 		let full = NSMutableAttributedString()

@@ -2,6 +2,22 @@
 
 A simple Swift NSAttributedString wrapper to simplify creation of a styled string.
 
+<p align="center">
+    <img src="https://img.shields.io/github/v/tag/dagronf/DSFAttributedStringStream" />
+    <img src="https://img.shields.io/badge/macOS-10.10+-red" />
+    <img src="https://img.shields.io/badge/iOS-11.0+-blue" />
+    <img src="https://img.shields.io/badge/tvOS-11.0+-orange" />
+    <img src="https://img.shields.io/badge/macCatalyst-1.0+-yellow" />
+</p>
+
+<p align="center">
+    <img src="https://img.shields.io/badge/Swift-5.0+-orange.svg" />
+    <img src="https://img.shields.io/badge/License-MIT-lightgrey" />
+    <a href="https://swift.org/package-manager">
+        <img src="https://img.shields.io/badge/spm-compatible-brightgreen.svg?style=flat" alt="Swift Package Manager" />
+    </a>
+</p>
+
 ```swift
 let attributedString = NSAttributedString.stream {
    $0.set(NSColor.blue)
@@ -24,9 +40,17 @@ let attributedString =
 }
 ```
 
-# API and usage
+# Installation
 
-Just add `DSFAttributedStringStream.swift` to your project
+## Using Swift PM
+
+Just add `https://github.com/dagronf/DSFAttributedStringStream` to your project.
+
+## Direct
+
+Add `Sources/DSFAttributedStringStream/DSFAttributedStringStream.swift` to your project
+
+# API and usage
 
 ## Adding text and images
 
