@@ -38,7 +38,7 @@ I wanted to be able to use attributed strings within one of my projects, however
 
 I also wanted a _relatively_ safe method for defining the string.  I really like the idea of using HTML style tags, but this would require string parsing to determine offsets and handling parsing errors.
 
-This class is designed as a very simple lightweight `NSAttributedString` creator.
+This library provides a very simple lightweight `NSAttributedString` builder.
 
 ```swift
 let attributedString = 
@@ -53,11 +53,11 @@ let attributedString =
 
 ## Using Swift PM
 
-Just add `https://github.com/dagronf/DSFAttributedStringStream` to your project.
+Just add `https://github.com/dagronf/DSFAttributedStringBuilder` to your project.
 
 ## Direct
 
-Add `Sources/DSFAttributedStringStream/DSFAttributedStringStream.swift` to your project
+Add `Sources/DSFAttributedStringBuilder/DSFAttributedStringBuilder.swift` to your project
 
 # API and usage
 
@@ -281,6 +281,14 @@ NSMutableParagraphStyle* style = [[NSMutableParagraphStyle alloc] init];
 
 NSAttributedString* attributedString = [builder attributed];
 ```
+
+# Alternatives
+
+## MarkdownAttributedString
+
+[Craig Hockenberry](https://github.com/chockenberry) has a fantastic Markdown ⟺ NSAttributedString library called [MarkdownAttributedString](https://github.com/chockenberry/MarkdownAttributedString) written in Objective-C.
+
+If your formatting needs can be met using [Markdown](https://www.markdownguide.org/getting-started/) and you're not adverse to string parsing (it is in active use in The Iconfactory's [Tot application](https://tot.rocks)) it is highly recommended, especially when dealing with localizations.
 
 # License
 
